@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM 
+	"http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+	<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/tickery-crawler.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n" />
+		</layout>
+	</appender>
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender"> 
+		<param name="Target" value="System.out"/> 
+		<layout class="org.apache.log4j.PatternLayout"> 
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n"/> 
+		</layout> 
+	</appender>
+	<logger name="org.apache.http">
+		<level value="warn"/> 
+	</logger>
+	<logger name="org.apache.commons.httpclient">
+		<level value="warn"/> 
+	</logger>
+	<logger name="httpclient.wire.header">
+		<level value="warn"/>
+	</logger>
+	<logger name="httpclient.wire.content">
+		<level value="warn"/>
+	</logger>	
+	<category name="ru">
+		<priority value="DEBUG" />
+	</category>
+	<category name="org">
+		<priority value="INFO" />
+	</category>
+	<category name="com">
+		<priority value="INFO" />
+	</category>
+	<category name="net">
+		<priority value="INFO" />
+	</category>
+	<category name="org.springframework">
+		<priority value="WARN" />
+	</category>
+	<category name="org.hibernate">
+		<priority value="WARN" />
+	</category>
+	<category name="org.hibernate.SQL">
+		<priority value="WARN" />
+	</category>
+	<category name="org.hibernate.SQL">
+		<priority value="WARN" />
+	</category>	
+	<root>
+		<priority value="ALL" /> 
+		<appender-ref ref="FILE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>
